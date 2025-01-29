@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useContext } from "react";
-import CartContext from "../context/cartContext";
+import Link from "next/link";
 
 export default function ProductList({ products }) {
-    const { addToCart } = useContext(CartContext);
 
   if (!products || products.length === 0) {
     return <p className="text-center text-gray-700">No hay productos disponibles.</p>;
@@ -27,12 +25,11 @@ export default function ProductList({ products }) {
           />
           <h2 className="text-xl font-bold mt-4">{product.name}</h2>
           <p className="text-gray-700 mb-4">${product.price}</p>
-          <button
-            onClick={() => addToCart(product)}
+          <Link href={`/product/${product.name.toLowerCase().replace(/ /g, "-")}`}
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           >
-            Agregar al carrito
-          </button>
+            Detalles
+          </Link>
         </div>
       ))}
     </div>

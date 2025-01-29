@@ -18,6 +18,7 @@ export default function ProductDetail({ product }) {
             className="w-full h-auto mx-auto"
          />
       <p className="text-xl text-gray-700 my-4">Precio: ${product.price}</p>
+      <p className="text-gray-800 my-4">{product.description}</p>
         <button onClick={() => addToCart(product)} className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
           Añadir al carrito
         </button>
