@@ -1,34 +1,16 @@
 "use client";
 
-import { useState } from 'react';
-
+import { useContext } from 'react';
+import CartContext from '../context/cartContext';
 
 export default function CartPage() {
-  const [cart, setCart] = useState([]);
-
-  const removeFromCart = (productName) => {
-    setCart(cart.filter((item) => item.name !== productName));
-  };
-
-  const updateQuantity = (productName, newQuantity) => {
-    setCart(
-      cart.map((item) =>
-        item.name === productName
-          ? { ...item, quantity: newQuantity > 0 ? newQuantity : 1 }
-          : item
-      )
-    );
-  };
-
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+  const { cart, removeFromCart, updateQuantity, calculateTotal } = useContext(CartContext);
 
   return (
     <div className="min-h-screen flex flex-col items-center">
       <main className="flex-grow p-6 w-full max-w-4xl">
         <h1 className="text-4xl font-bold mb-8 text-center text-pink-600">
-          Carrito de Compras
+          Carrito de compras
         </h1>
         {cart.length === 0 ? (
           <p className="text-center text-gray-700">Tu carrito está vacío.</p>
@@ -41,7 +23,7 @@ export default function CartPage() {
                     <div>
                       <p className="font-bold text-lg">{item.name}</p>
                       <p className="text-gray-700">Precio: ${item.price}</p>
-                      <p className="text-gray-700">Cantidad:</p>
+                      <p className="text-gray-700">Cantidad: </p>
                       <input
                         type="number"
                         value={item.quantity}
@@ -64,13 +46,12 @@ export default function CartPage() {
             <p className="text-lg font-bold mt-4 text-center">
               Total a pagar: ${calculateTotal()}
             </p>
-            <button className="bg-green-500 text-white px-4 py-2 rounded mt-4 block mx-auto">
-              Pagar
-            </button>
+              <button className="bg-green-500 text-white px-4 py-2 block mt-4 rounded mx-auto">
+                Pagar
+             </button>
           </div>
         )}
       </main>
-     
     </div>
   );
 }

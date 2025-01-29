@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import '../styles/globals.css';
-
+import { CartProvider } from './context/cartContext';
 
 export default function RootLayout({ children }) {
   return (
@@ -12,9 +12,13 @@ export default function RootLayout({ children }) {
         <meta name="description" content="App de catálogo de productos" />
       </Head>
       <body>
-        <Header />
-        <main className="max-w-7xl mx-auto p-6">{children}</main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main className="max-w-7xl mx-auto p-6">
+            {children}
+          </main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
