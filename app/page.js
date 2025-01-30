@@ -1,8 +1,13 @@
+'use client';
 import ProductList from './components/ProductList.js'; 
-import products from './data/product.js';            
+import app from './firebase.js';
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { cartContext } from './context/cartContext.js';
+import { use, useContext } from 'react';         
        
 
 export default function HomePage() {
+  const { agregarProductos } = useContext(cartContext);
   return (
     <div className="min-h-screen flex flex-col">
       
@@ -14,6 +19,8 @@ export default function HomePage() {
           Descubre nuestros productos de alta calidad para resaltar tu belleza. Encuentra el producto perfecto para ti.
         </p>
         <ProductList products={products} />
+        <h1 className="text-4xl font-bold mb-8 text-center text-pink-600"> Vas a agregar los productos a tu bd</h1>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={agregarProductos}>Agregar</button>
       </main>
       
     </div>

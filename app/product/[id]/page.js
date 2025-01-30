@@ -3,10 +3,12 @@ import { useState, useContext } from 'react';
 import Image from 'next/image';
 import products from "../../data/product";
 import CartContext from '../../context/cartContext';
+import { useParams } from 'next/navigation';
 
-export default function ProductPage({ params }) {
+export default function ProductPage() {
+  const { id } = useParams();
   const product = products.find(
-    (p) => p.name.toLowerCase().replace(/ /g, "-") === params.id
+      (p) => p.name.toLowerCase().replace(/ /g, "-") === id
   );
 
   const [quantity, setQuantity] = useState(1);

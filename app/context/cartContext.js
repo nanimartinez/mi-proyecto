@@ -1,12 +1,20 @@
 "use client";
 
 import { createContext, useState, useEffect } from 'react';
+import {collection, getDocs, addDoc } from "firebase/firestore";
+import db from "./firebaseConfig";
+import { products } from "../data/product";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-
+// Carga de productos a firebase
+const agregarProductos = () => {
+    products.forEach((
+      addDoc(collection(db, "products"), products)
+    ))
+}
   useEffect(() => {
       const storedCart = localStorage.getItem('cart');
       if (storedCart) {
@@ -52,7 +60,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, calculateTotal }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, calculateTotal, agregarProductos }}>
       {children}
     </CartContext.Provider>
   );
