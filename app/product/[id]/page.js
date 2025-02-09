@@ -12,15 +12,15 @@ export default function ProductPage() {
   );
 
   const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useContext(CartContext);
+  // const { addToCart } = useContext(CartContext);
 
 
   if (!product) {
     return <p>Producto no encontrado</p>;
   }
-    const handleAddToCart = () => {
-        addToCart({...product, quantity: parseInt(quantity,10) });
-    };
+    // const handleAddToCart = () => {
+    //     addToCart({...product, quantity: parseInt(quantity,10) });
+    // };
 
   return (
         <div className="max-w-2xl mx-auto text-center p-6">
@@ -41,13 +41,14 @@ export default function ProductPage() {
                 id="quantity"
                 min="1"
                 value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
+                 /*onChange={(e) => setQuantity(e.target.value)}*/
                 className="border rounded p-1 w-16 text-black"
+                disabled
             />
             </div>
-         <button onClick={handleAddToCart} className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+        {/* <button onClick={handleAddToCart} className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
                 Añadir al carrito
-            </button>
+            </button> */}
         </div>
   );
 }

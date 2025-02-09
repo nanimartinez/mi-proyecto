@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import CartContext from '../context/cartContext';
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity, calculateTotal } = useContext(CartContext);
+  const { cart, /*removeFromCart, updateQuantity,*/ calculateTotal } = useContext(CartContext);
 
   return (
     <div className="min-h-screen flex flex-col items-center">
@@ -27,18 +27,19 @@ export default function CartPage() {
                       <input
                         type="number"
                         value={item.quantity}
-                        onChange={(e) =>
-                          updateQuantity(item.name, parseInt(e.target.value))
-                        }
+                         /*onChange={(e) =>
+                           updateQuantity(item.name, parseInt(e.target.value))
+                         }*/
                         className="border rounded p-1 w-16"
+                        disabled
                       />
                     </div>
-                    <button
+                     {/*<button
                       onClick={() => removeFromCart(item.name)}
                       className="bg-red-500 text-white px-4 py-2 rounded"
                     >
                       Eliminar
-                    </button>
+                    </button>*/}
                   </div>
                 </li>
               ))}

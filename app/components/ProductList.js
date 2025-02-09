@@ -27,11 +27,11 @@ export default function ProductList({ products }) {
                 />
                 <h2 className="text-xl font-bold mt-4">{product.name}</h2>
                 <p className="text-gray-700 mb-4">${product.price}</p>
-                <Link href={`/product/${slug}`}
+                {/* <Link href={`/product/${slug}`}
                       className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
                     Detalles
-                </Link>
+                </Link> */}
             </div>
       )})}
     </div>

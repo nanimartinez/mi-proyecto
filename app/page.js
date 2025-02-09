@@ -1,13 +1,13 @@
 'use client';
 import ProductList from './components/ProductList.js'; 
-import app from './firebase.js';
+import { db } from './context/firebaseConfig.js';
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import { cartContext } from './context/cartContext.js';
+import  CartContext  from './context/cartContext.js';// Importa el contexto CartContext
 import { use, useContext } from 'react';         
-       
+import products from './data/product';
 
 export default function HomePage() {
-  const { agregarProductos } = useContext(cartContext);
+  const { agregarProductos } = useContext(CartContext);
   return (
     <div className="min-h-screen flex flex-col">
       

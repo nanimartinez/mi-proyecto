@@ -5,8 +5,8 @@ import { useContext } from 'react';
 import CartContext from '../context/cartContext';
 
 export default function ProductDetail({ product }) {
-  const { addToCart } = useContext(CartContext);
-
+  // const { addToCart } = useContext(CartContext);
+//se comenta la funcion para que no se renderice en la pagina de detalle
   return (
     <div className="max-w-2xl mx-auto text-center">
       <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
@@ -19,9 +19,9 @@ export default function ProductDetail({ product }) {
          />
       <p className="text-xl text-gray-700 my-4">Precio: ${product.price}</p>
       <p className="text-gray-800 my-4">{product.description}</p>
-        <button onClick={() => addToCart(product)} className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+        {/* <button onClick={() => addToCart(product)} className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
           Añadir al carrito
-        </button>
+        </button> */}
     </div>
   );
 }
